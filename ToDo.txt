@@ -7,4 +7,5 @@ To Do:
 - Write python code to draw those images
 - Update app to send request to draw images
 - Figure out how to put everything in/on grad cap
+- Figure out how to run python program on startup of RPi
 - Update the app to include color in text drawing
