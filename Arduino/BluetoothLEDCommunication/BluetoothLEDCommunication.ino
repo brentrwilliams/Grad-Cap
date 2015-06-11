@@ -34,10 +34,6 @@ void setup(void)
 { 
    Serial.begin(9600);
    while(!Serial); // Leonardo/Micro should wait for serial init
-   Serial.println(F("Adafruit Bluefruit Low Energy nRF8001 Print echo demo"));
-
-   // BTLEserial.setDeviceName("NEWNAME"); /* 7 characters max! */
-
    BTLEserial.begin();
 }
 
@@ -61,15 +57,15 @@ void loop()
       // print it out!
       if (status == ACI_EVT_DEVICE_STARTED) 
       {
-         Serial.println(F("* Advertising started"));
+         Serial.println(F("Started"));
       }
       if (status == ACI_EVT_CONNECTED) 
       {
-         Serial.println(F("* Connected!"));
+         Serial.println(F("Connected"));
       }
       if (status == ACI_EVT_DISCONNECTED) 
       {
-        Serial.println(F("* Disconnected or advertising timed out"));
+        Serial.println(F("Disconnected"));
       }
       // OK set the last status change to this one
       laststatus = status;
@@ -77,11 +73,6 @@ void loop()
 
    if (status == ACI_EVT_CONNECTED) 
    {
-      // Lets see if there's any data for us!
-      if (BTLEserial.available()) 
-      {
-         Serial.print("* "); Serial.print(BTLEserial.available()); Serial.println(F(" bytes available from BTLE"));
-      }
       // OK while we still have something to read, get a character and print it out
       while (BTLEserial.available()) 
       {
@@ -91,29 +82,21 @@ void loop()
 
       // Next up, see if we have any data to get from the Serial console
 
-      if (Serial.available()) 
-      {
-         // Read a line from Serial
-         Serial.setTimeout(100); // 100 millisecond timeout
-         String s = Serial.readString();
-
-         // We need to convert the line to bytes, no more than 20 at this time
-         uint8_t sendbuffer[20];
-         s.getBytes(sendbuffer, 20);
-         char sendbuffersize = min(20, s.length());
-
-         Serial.print(F("\n* Sending -> \"")); Serial.print((char *)sendbuffer); Serial.println("\"");
-
-         // write the data
-         BTLEserial.write(sendbuffer, sendbuffersize);
-      }
+//      if (Serial.available()) 
+//      {
+//         // Read a line from Serial
+//         Serial.setTimeout(100); // 100 millisecond timeout
+//         String s = Serial.readString();
+//
+//         // We need to convert the line to bytes, no more than 20 at this time
+//         uint8_t sendbuffer[20];
+//         s.getBytes(sendbuffer, 20);
+//         char sendbuffersize = min(20, s.length());
+//
+//         Serial.print(F("\n* Sending -> \"")); Serial.print((char *)sendbuffer); Serial.println("\"");
+//
+//         // write the data
+//         BTLEserial.write(sendbuffer, sendbuffersize);
+//      }
    }
 }
-
-
-
-
-
-
-
-
