@@ -1,10 +1,5 @@
 To Do:
-- Test the Arduino being powered by the Portable USB Charger and communicating with the RPi
-- Write a python program to interpret the serial input from the Arduino
-- Clean up the Arduino code to only output the expected serial output
-- Test Adafruit app sending text to Arduino that serially communicates with RPi to draw text on LED screen
-- Pick out some images to draw
-- Write python code to draw those images
+- Write python code to draw images
 - Update app to send request to draw images
 - Figure out how to put everything in/on grad cap
 - Figure out how to run python program on startup of RPi
